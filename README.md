@@ -380,6 +380,6 @@ IAM user or IAM role lacks required Rekognition permissions.
 # References
 
 * [Amazon Rekognition Face Liveness Documentation](https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness.html)
-* [Amazon Cognito Identity Pools Documentation]
-* AWS SDK for Java v2
-* AWS Amplify Face Liveness Documentation
+* [Amazon Cognito Identity Pools Documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html)
+* [AWS SDK for Java v2](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/home.html)
+* [AWS Amplify Face Liveness Documentation](https://ui.docs.amplify.aws/react/connected-components/liveness)
