@@ -1,0 +1,29 @@
+aws:
+  region: us-east-1
+  s3-bucket-name: test-bucket
+  threshold: 95
+  session-expiration-time: 5
+  image-expiration-time: 5
+  call-timeout: 20
+  call-attempt-timeout: 20
+  num-retries: 3
+redis:
+  host: localhost
+  port: 6380
+  password: password
+  ssl-enabled: false
+  timeout: 5s
+  image-result-expiration-hours: 24
+rest:
+  template:
+    max-total-connections: 200
+    max-connections-per-route: 20
+    retry-count: 3
+    retry-interval-seconds: 2
+    socket-timeout-seconds: 5
+    connect-timeout-seconds: 2
+    connection-request-timeout-seconds: 3
+    idle-connection-eviction-seconds: 30
+rekognition:
+  image:
+    max-size: 5
