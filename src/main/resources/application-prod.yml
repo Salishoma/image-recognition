@@ -1,0 +1,34 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+aws:
+  region: ${AWS_REGION:us-east-1}
+  s3-bucket-name: ${AWS_S3_BUCKET}
+  threshold: ${AWS_THRESHOLD:70}
+  session-expiration-time: ${AWS_REKOGNITION_EXP_IN_MINUTES:5}
+  image-expiration-time: ${AWS_REKOGNITION_IMG_EXP_IN_MINUTES:5}
+  call-timeout: ${CALL_TIMEOUT:20}
+  call-attempt-timeout: ${CALL_TIMEOUT:20}
+  num-retries: ${NUM_RETRIES:3}
+redis:
+  host: ${REDIS_HOST}
+  port: ${REDIS_PORT}
+  password: ${REDIS_PASSWORD}
+  ssl-enabled: ${SSL_ENABLED}
+  timeout: ${REDIS_TIMEOUT}
+  image-result-expiration-hours: ${REDIS_REKOGNITION_IMG_RESULT_EXP_HOURS}
+rest:
+  template:
+    max-total-connections: ${MAX_TOTAL_CONNECTIONS:200}
+    max-connections-per-route: ${MAX_CONNECTIONS_PER_ROUTE:20}
+    retry-count: ${RETRY_COUNT:3}
+    retry-interval-seconds: ${RETRY_INTERVAL_SECONDS:2}
+    socket-timeout-seconds: ${SOCKET_TIMEOUT_SECONDS:5}
+    connect-timeout-seconds: ${CONNECTION_TIMEOUT_SECONDS:2}
+    connection-request-timeout-seconds: ${CONNECTION_REQUEST_TIMEOUT_SECONDS:3}
+    idle-connection-eviction-seconds: ${IDLE_CONNECTION_EVICTION_SECONDS:30}
+rekognition:
+  image:
+    max-size: 5

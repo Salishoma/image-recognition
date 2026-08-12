@@ -1,0 +1,52 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+      - dev
+      - main
+
+variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'dev') }}:
+    - name: springProfile
+      value: dev
+
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    - name: springProfile
+      value: prod
+
+jobs:
+- job: Build
+  displayName: 'Build Java Application'
+  pool:
+    vmImage: 'ubuntu-latest'
+ 
+  steps:
+  - task: JavaToolInstaller@1
+    inputs:
+      versionSpec: '21'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+  - task: Maven@4
+    inputs:
+      mavenPomFile: 'pom.xml'
+      options: >
+        -Dspring.profiles.active=$(springProfile)
+        -DSERVER_PORT=$(SERVER_PORT)
+      publishJUnitResults: false
+      javaHomeOption: 'JDKVersion'
+      mavenVersionOption: 'Default'
+      mavenAuthenticateFeed: false
+      effectivePomSkip: false
+
+  - task: CopyFiles@2
+    inputs:
+      contents: '**/target/*.jar'
+      targetFolder: '$(Build.ArtifactStagingDirectory)/drop'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Build.ArtifactStagingDirectory)/drop'
+      artifactName: 'drop'

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: image-recognition
+  profiles:
+    active: ${SPRING_ACTIVE_PROFILE:dev}
